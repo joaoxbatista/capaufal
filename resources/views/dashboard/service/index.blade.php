@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="card-panel" style="margin-top: 30px">
+    
 	<form action="{{ route('dashboard.services.store') }}" method="post" enctype="multipart/form-data">
 		<h5>Formulário para criação de requisições</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi autem distinctio eum excepturi facilis fugit, nostrum officiis quisquam quo.</p>
@@ -10,8 +11,8 @@
 		<div class="row">
             <div class="col m4">
                 <div class="input-field">
-                    <label for="titulo">Título</label>
-                    <input type="text" id="titulo" name="titulo" placeholder="Insira o título da requisição" class="validate">
+                    <label for="name">Título</label>
+                    <input type="text" id="name" name="name" placeholder="Insira o título da requisição" class="validate">
                 </div>
             </div>
 
@@ -29,7 +30,7 @@
 
 		<div class="input-field">
 			<label>Descrição</label>
-			<textarea style="height: 100px;" class="materialize-textarea validate" name="descricao" placeholder="Insira uma descrição sobre a requisição"></textarea>
+			<textarea style="height: 100px;" class="materialize-textarea validate" name="content" placeholder="Insira uma descrição sobre a requisição"></textarea>
 		</div>
 
 		<div class="file-field input-field">

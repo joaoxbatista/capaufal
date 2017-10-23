@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Http\Request;
+use App\Models\GlpiRequest as GlpiRequest;
 
 class ServicesController extends Controller
 {
@@ -20,6 +21,19 @@ class ServicesController extends Controller
 
 	public function store(Request $request)
 	{
-		dd($request->all());		
+
+		$data = $request->except('_token');
+
+		$GlpiRequest = new GlpiRequest();
+			
+		$message = $GlpiRequest->store($request->session()->get('session_token'), 'Ticket', $data);
+
+		return redirect()->route('dashboard.services.success');
+		
+	}
+
+	public function success(Request $request)
+	{
+		return view('dashboard.service.success_message');
 	}
 }

@@ -24,13 +24,12 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a><i class="material-icons right">list</i>Serviços</a></li>
 					<li><a><i class="material-icons right">info</i>Informações</a></li>
-					<li><a><i class="material-icons right">power_settings_new</i></a></li>
+					<li><a href="{{ route('glpi.logout') }}"><i class="material-icons right">power_settings_new</i></a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<div class="container">
-
 			<div class="row">
 				<div class="col m12">
 					@yield('content')
