@@ -57,8 +57,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'glpi.auth' => \App\Http\Middleware\Authenticated::class,
-        'glpi.redirect' => \App\Http\Middleware\AuthenticatedRedirect::class,
+        //'glpi.auth' => \App\Http\Middleware\Authenticated::class,
+        //'glpi.redirect' => \App\Http\Middleware\AuthenticatedRedirect::class,
 
     ];
 }

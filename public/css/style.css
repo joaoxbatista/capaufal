@@ -1,0 +1,49 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+body{
+  background-color: #eeeeee;
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.ufal img{
+  max-height: 55px;
+  min-height: 55px;
+}
+.ufal a{
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.fmenu a{
+	font-size: 25px;
+}
+.nomesp h6{
+	font-size: 16px;
+}
+.nomesp p{
+	font-size: 15px;
+}
+.imgcard h6{
+	max-height: 40px;
+	min-height: 40px;
+}
+
+.tam .carousel{
+	min-height: 600px
+}
+.tam im{
+	min-height: 600px;
+}
+
+.logoufal{
+	margin-top: 1px;
+}

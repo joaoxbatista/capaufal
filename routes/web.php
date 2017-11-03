@@ -25,7 +25,7 @@ Route::group(
 
 	function () 
 	{
-		Route::get('', 'StaticPagesController@index')->name('home')->middleware('glpi.redirect');
+		Route::get('', 'StaticPagesController@index')->name('home');
 	}
 );
 
@@ -46,15 +46,21 @@ Route::group(
 			[
 				'as' => 'services.',
 				'prefix' => 'services',
-				'middleware' => 'glpi.auth'
+				// 'middleware' => 'glpi.auth'
 			],
 
 			function()
 			{
 				Route::get('success', 'Dashboard\ServicesController@success')->name('success');
-
-				Route::get('create', 'Dashboard\ServicesController@index')->name('create');
-				Route::post('', 'Dashboard\ServicesController@store')->name('store');
+				Route::get('view/{id}', 'Dashboard\ServicesController@show')->name('view');
+				
+				Route::get('create', 'Dashboard\ServicesController@create')->name('create');
+				Route::post('store', 'Dashboard\ServicesController@store')->name('store');
+				
+				Route::post('edit', 'Dashboard\ServicesController@edit')->name('edit');
+				Route::post('update', 'Dashboard\ServicesController@update')->name('update');
+				
+				Route::post('remove', 'Dashboard\ServicesController@remove')->name('remove');
 			}
 
 		);

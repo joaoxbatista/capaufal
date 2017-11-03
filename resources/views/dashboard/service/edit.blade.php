@@ -6,37 +6,38 @@
         <div class="col m12">
             
             <h4>Formulário para criação de serviços</h4>
-            <form method="post" action="{{route('dashboard.services.store')}}">
+            <form method="post" action="{{route('dashboard.services.update')}}">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                
+                <input type="hidden" name="id" value="{{ $service->id }}">
+
                 <div class="input-field col s6">
-                    <input id="name" name="name" type="text" class="validate">
+                    <input id="name" name="name" value="{{ $service->name }}" type="text" class="validate">
                     <label for="name">Nome</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="target_public" name="target_public" type="text" class="validate">
+                    <input id="target_public" name="target_public" value="{{ $service->target_public }}" type="text" class="validate">
                     <label for="target_public">Público alvo</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="requirements" name="requirements" type="text" class="validate">
+                    <input id="requirements" name="requirements" value="{{ $service->requirements }}" type="text" class="validate">
                     <label for="requirements">Requisitos</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="quick_help" name="quick_help" type="text" class="validate">
+                    <input id="quick_help" name="quick_help" value="{{ $service->quick_help }}" type="text" class="validate">
                     <label for="quick_help">Ajuda rápida</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="slt_id" name="slt_id" type="text" class="validate">
+                    <input id="slt_id" name="slt_id" type="number" class="validate" value="{{ $service->slt_id }}" >
                     <label for="slt_id">ID da SLT</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <select name="sector_id">
+                    <select name="sector_id" value="{{ $service->sector->id }}" >
                         @foreach($sectors as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->name }}</option>
                         @endforeach()
@@ -45,13 +46,12 @@
                 </div>
                 
                 <div class="input-field col s12">
-                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                    <textarea id="description" name="description" class="materialize-textarea"> {{ $service->description }}</textarea>
                     <label for="description">Descrição</label>
                 </div>
                 
                 <div class="col s12">
                      <button class="waves-effect waves-light btn" type="submit">Salvar</button>
-
                 </div>
             </form>
             

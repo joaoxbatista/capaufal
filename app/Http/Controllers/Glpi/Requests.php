@@ -10,13 +10,13 @@ class Requests extends Controller
 {
     public function login(Request $request)
     {
-        $GlpiRequest = new GlpiRequest();
+        // $GlpiRequest = new GlpiRequest();
         
-        $GlpiRequest->setCredentials($request->get('username'), $request->get('password'));
+        // $GlpiRequest->setCredentials($request->get('username'), $request->get('password'));
         
-        $token = $GlpiRequest->getSessionToken();
+        // $token = $GlpiRequest->getSessionToken();
         
-        $request->session()->put('session_token', $token);
+        // $request->session()->put('session_token', $token);
 
         return redirect()->route('dashboard.services.create');
     }
