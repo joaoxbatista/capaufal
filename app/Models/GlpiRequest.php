@@ -15,6 +15,7 @@ class GlpiRequest
     // Seta as configurações default do glpi.
     public function __construct()
     {
+        // Pegar valores do env - env('somename')
         $this->client = new Client();
         $this->base_url = 'http://172.17.12.212/glpi-9.1.2/apirest.php';
         $this->headers['App-Token'] = "7rarevvd5ndywfiyb7hlnegm7v6ztu8fyge6u8e1";

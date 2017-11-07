@@ -12,18 +12,13 @@
             @if($service->quick_help)
                 <p><strong>Ajuda rápida: </strong>{{ $service->quick_help }}</p>
             @endif
-            <!--
-            <form method="post" action="{{route('dashboard.services.create')}}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="service_id" value="{{ $service->id }}">
-                <button type="submit" class="waves-effect waves-light btn">Requisitar serviço</button>
-            </form>
-            -->
+
         </div>
     </div>
 
     <div class="row">
         <div class="col m6">
+            
             <form method="post" action="{{route('dashboard.services.edit')}}" style="display: inline;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="service_id" value="{{ $service->id }}">
@@ -35,8 +30,16 @@
                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                 <button type="submit" class="waves-effect waves-light red accent-4 btn">Deletar</button>
             </form>
+
+            <form method="post" action="{{route('dashboard.calls.create')}}" style="display: inline;">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="service_id" value="{{ $service->id }}">
+                <button type="submit" class="waves-effect waves-light btn">Criar chamado</button>
+            </form>
+
         </div>
     </div>
+
 </div>
 
 @endsection

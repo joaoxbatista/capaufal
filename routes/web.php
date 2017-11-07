@@ -36,7 +36,7 @@ Route::group(
 		'as' => 'dashboard.', 
 		'prefix' => 'dashboard'
 	],
-
+	
 	function () 
 	{
 		
@@ -63,6 +63,20 @@ Route::group(
 				Route::post('remove', 'Dashboard\ServicesController@remove')->name('remove');
 			}
 
+		);
+
+		//Rotas para chamado
+		Route::group(
+			[
+				'as' => 'calls.',
+				'prefix' => 'calls'
+			],
+
+			function()
+			{
+				Route::post('create', 'Dashboard\CallsController@create')->name('create');
+				Route::post('store', 'Dashboard\CallsController@store')->name('store');
+			}
 		);
 	}
 );
