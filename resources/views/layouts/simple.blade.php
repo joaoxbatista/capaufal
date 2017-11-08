@@ -16,9 +16,16 @@
 		<div class="nav-wrapper container ufal">
 			<img src="img/logoufal.png" class="responsive-img logoufal">
 			<a id="logo-container" href="http://www.ufal.edu.br/arapiraca" class="brand-logo hide-on-med-and-down">UFAL - Arapiraca</a>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a
 		</div>
 	</nav>
+	@if(Auth::check())
+		<a href="{{ route('logout') }}"
+			onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+			Sair
+		</a>
+	@endif
 	<div id="content" style="min-height: 50vh">
 		@yield('content')
 	</div>

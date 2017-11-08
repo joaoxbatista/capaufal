@@ -19,17 +19,19 @@
     <div class="row">
         <div class="col m6">
             
-            <form method="post" action="{{route('dashboard.services.edit')}}" style="display: inline;">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="service_id" value="{{ $service->id }}">
-                <button type="submit" class="waves-effect waves-light orange accent-4 btn">Editar</button>
-            </form>
+            @if(Auth::check())
+                <form method="post" action="{{route('dashboard.services.edit')}}" style="display: inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+                    <button type="submit" class="waves-effect waves-light orange accent-4 btn">Editar</button>
+                </form>
 
-            <form method="post" action="{{route('dashboard.services.remove')}}" style="display: inline;">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="service_id" value="{{ $service->id }}">
-                <button type="submit" class="waves-effect waves-light red accent-4 btn">Deletar</button>
-            </form>
+                <form method="post" action="{{route('dashboard.services.remove')}}" style="display: inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+                    <button type="submit" class="waves-effect waves-light red accent-4 btn">Deletar</button>
+                </form>
+            @endif
 
             <form method="post" action="{{route('dashboard.calls.create')}}" style="display: inline;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

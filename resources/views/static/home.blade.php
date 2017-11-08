@@ -66,7 +66,9 @@
         </div>
 
         
-        <a href="{{ route('dashboard.services.create') }}" class="waves-effect waves-light btn">Novo Serviço</a>
+        @if(Auth::check())
+            <a href="{{ route('dashboard.services.create') }}" class="waves-effect waves-light btn">Novo Serviço</a>
+        @endif
     
         <div class="row" style="margin-bottom: 50px">
             @foreach($sectors as $sector)

@@ -6,6 +6,7 @@
         <div class="col m12">
             
             <h4>[ CHAMADO ] {{ $service->name }}</h4>
+            <p>{{ $service->description }}</p>
             <form method="post" action="{{route('dashboard.calls.store')}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="service_id" value="{{ $service->id }}">
@@ -19,7 +20,7 @@
                 
                 <div class="row">
                     <div class="col s12">
-                        <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+                        <button class="waves-effect waves-light btn" type="submit">Enviar</button>
                    </div>
                 </div>
 

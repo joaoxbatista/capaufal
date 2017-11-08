@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use \GuzzleHttp\Psr7\Request as ExternalRequest;
+use \GuzzleHttp\Psr7\Request as ExternalRequest; //Renomeia a classe Request para ExternalRequest
 use \GuzzleHttp\Client;
 
 class GlpiRequest
@@ -17,26 +17,29 @@ class GlpiRequest
     {
         // Pegar valores do env - env('somename')
         $this->client = new Client();
-        $this->base_url = 'http://172.17.12.212/glpi-9.1.2/apirest.php';
-        $this->headers['App-Token'] = "7rarevvd5ndywfiyb7hlnegm7v6ztu8fyge6u8e1";
+        $this->base_url = env('GLPI_BASE_URL');
+        $this->headers['App-Token'] = env('GLPI_APP_TOKEN');
     }
 
+    // Retorna o Token da API do GLPI
     public function getAppToken()
     {
     	return $this->headers['App-Token'];
     }
 
-    //Adicionar um atributo ao cabeçalho, o mesmo deve ser uma array com nome do atributo como chave.
+    // Adicionar um atributo ao cabeçalho, o mesmo deve ser uma array com nome do atributo como chave.
     public function addToHeader($name, $value)
     {
     	$this->headers[$name] = $value;
     }
 
+    // Adicionar um atributo no corpo da requisição
     public function addToBody($name, $value)
     {	
     	$this->body[$name] = $value;
     }
 
+    // Seta o corpo da aplicação
     public function setBody($body)
     {
     	$this->body = $body;
@@ -48,13 +51,13 @@ class GlpiRequest
     	$this->headers['Authorization'] = 'Basic '.base64_encode("{$username}:{$password}");
     }
 
-    //Seta o token da aplicação Glpi.
+    // Seta o token da aplicação Glpi.
     public function setAppToken($token)
     {
     	$this->headers['App-Token'] = $token;	
     }
 
-    //Retorna o token de acesso
+    // Retorna o token de acesso
     public function getSessionToken()
     {
     	$url_session = "{$this->base_url}/initSession";
@@ -73,7 +76,8 @@ class GlpiRequest
     	$url_store = "{$this->base_url}/{$entity_name}";
     	$this->setBody($data);
     	$this->addToHeader('Session-Token', $session_token);
-    	$response = $this->client->post($url_store, [
+    
+        $response = $this->client->post($url_store, [
     		'headers' => $this->headers, 
     		'json' => ['input' => ['name' => 'teste']]
     	]);

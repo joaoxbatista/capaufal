@@ -18,11 +18,9 @@ class CallsController extends Controller
 
     public function store(Request $request)
     {
-        
-        $service_id = $request->get('service_id');
-        $service = Service::find($service_id);
-        dd($service->toArray());
-
-        
+	    $data = $request->except('_token');
+	    $GlpiRequest = new GlpiRequest();
+	    $message = $GlpiRequest->store($request->session()->get('session_token'), 'Ticket', $data);
+	    echo $message;
     }
 }

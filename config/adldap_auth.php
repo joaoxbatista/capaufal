@@ -147,7 +147,7 @@ return [
         |
         */
 
-        'eloquent' => 'email',
+        'eloquent' => 'username',  
 
     ],
 
@@ -239,7 +239,7 @@ return [
 
     'sync_attributes' => [
 
-        'email' => 'userprincipalname',
+        'username' => 'uid',
         'name' => 'cn',
 
     ],
