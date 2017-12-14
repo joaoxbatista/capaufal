@@ -57,30 +57,37 @@
     
     <div class="col s12 m12">
         
-        <div class="row">
-            <div class="col s12 m12">
-                <ul class="collection with-header">
-                    <li class="collection-header"><h4 id="equipe" class="light-blue-text center"><b>Catálogo de Serviços</b></h4></li>
-                </ul>
-            </div>
-        </div>
 
         
         @if(Auth::check())
             <a href="{{ route('dashboard.services.create') }}" class="waves-effect waves-light btn">Novo Serviço</a>
         @endif
-    
+
+        <div class="row">
+            <div class="col s12">
+                <h5>Servíços disponibilizados</h5>
+            </div>
+        </div>
+        
         <div class="row" style="margin-bottom: 50px">
+            
             @foreach($sectors as $sector)
                 <div class="col s4 m4">
-                    <h3>{{ $sector->name }}</h3>
-                    @if(count($sector->services) > 0)
-                        @foreach($sector->services as $service)
-                            <li><a href="{{ route('dashboard.services.view',['id' => $service->id]) }}">{{ $service->name }}</a></li>
-                        @endforeach
-                    @else
-                        <p> O setor não possui serviços cadastrados </p>
-                    @endif
+                    <div class="card">
+                        
+                        <div class="card-content">
+                            <span class="card-title">{{ $sector->name }}</span>
+                            @if(count($sector->services) > 0)
+                                <div class="collection">
+                                    @foreach($sector->services as $service)
+                                        <a class="collection-item" href="{{ route('dashboard.services.view',['id' => $service->id]) }}">{{ $service->name }}</a>
+                                    @endforeach
+                                </div>
+                            @else
+                                <p> O setor não possui serviços cadastrados </p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

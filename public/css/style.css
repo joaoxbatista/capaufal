@@ -47,3 +47,15 @@ body{
 .logoufal{
 	margin-top: 1px;
 }
+
+.brand-logo
+{
+	font-size: 12px !important;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#menu ul li a
+{
+	text-transform: uppercase;
+}

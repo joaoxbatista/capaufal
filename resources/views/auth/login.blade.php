@@ -2,17 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col s8 card">
+    <div class="row" style="margin: 50px 0px;">
+        <div class="col s6 offset-s3 card">
             <div class="card-content">
-                <div class="panel-heading">Login</div>
-                
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <h5 class="cart-title">Formulário de Login</h5>
+                    <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-                        
+
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+                            <label for="username" class="col-md-4 control-label">Nome do usuário</label>
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
                                 @if ($errors->has('username'))
@@ -24,7 +22,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Senha</label>
                             
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -36,25 +34,15 @@
                                 @endif
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        
+                                                
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Login
+                                    Entrar
                                 </button>
                                 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Esquecceu sua senha
                                 </a>
                             </div>
                         </div>

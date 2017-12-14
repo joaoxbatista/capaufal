@@ -11,31 +11,50 @@
 	<link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-	<!-- Menu -->
-	<nav class="blue darken-4" role="navigation">
-		<div class="nav-wrapper container ufal">
-			<img src="img/logoufal.png" class="responsive-img logoufal">
-			<a id="logo-container" href="http://www.ufal.edu.br/arapiraca" class="brand-logo hide-on-med-and-down">UFAL - Arapiraca</a>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a
-		</div>
-	</nav>
-	@if(Auth::check())
-		<a href="{{ route('logout') }}"
-			onclick="event.preventDefault();
+<!-- Menu -->
+
+<nav id="menu">
+	<div class="nav-wrapper blue dark-1">
+		<div class="container">
+			<a href="#" class="brand-logo">Universidade Federal de Alagoas Campus Arapiraca</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="{{ route('static.home') }}">Página Inicial</a></li>
+				<li><a href="">Serviços</a></li>
+				<li><a href="">Informações</a></li>
+				<li><a href="">Contato</a></li>
+				<li><a href="{{ route('login') }}">Entrar</a></li>
+				@if(Auth::check())
+				<li>
+					<a href="{{ route('logout') }}"
+						onclick="event.preventDefault();
 						document.getElementById('logout-form').submit();">
-			Sair
-		</a>
-	@endif
-	<div id="content" style="min-height: 50vh">
-		@yield('content')
+						Sair
+					</a>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</li>
+				@endif
+			</ul>
+		</div>
 	</div>
-	<!-- Rodapé -->
-	<footer class="page-footer blue darken-4">
-		<div class="container"> 
-			<div class="row">
-				<div class="col l4 s12">
-					<h5 class="white-text">Campus de Arapiraca</h5>
-					<p class="grey-text text-lighten-4"> 
+</nav>
+
+<div id="info-user">
+	{{ Auth::user() }}
+</div>
+
+<div id="content" style="min-height: 50vh">
+	@yield('content')
+</div>
+
+<!-- Rodapé -->
+<footer class="page-footer blue darken-1">
+	<div class="container"> 
+		<div class="row">
+			<div class="col l4 s12">
+				<h5 class="white-text">Campus de Arapiraca</h5>
+				<p class="grey-text text-lighten-4"> 
 					<ul>
 						<li>Av. Manoel Severino Barbosa</li>
 						<li>Bom Sucesso</li>
@@ -43,7 +62,7 @@
 						<li>Arapiraca - AL</li>
 					</ul>
 				</div>
-					
+				
 				<div class="col l4 s12">
 					<h5 class="white-text">Contatos</h5>
 					<ul>
