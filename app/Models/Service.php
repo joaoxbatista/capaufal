@@ -13,14 +13,15 @@ class Service extends Model
         'target_public', 
         'quick_help', 
         'requirements',
-        'sector_id',
+        'sector_category_id',
         'slt_id', 
     ];
 
     public $timestamps = false;
 
     public function sector(){
-        return $this->belongsTo(\App\Models\Sector::class);
+
+        return $this->belongsTo(\App\Models\SectorCategory::class);
     }
 
 }

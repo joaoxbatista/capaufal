@@ -18,11 +18,11 @@ class CreateServicesTable extends Migration
             $table->string('name'); // Nome do Serviço
             $table->text('description'); // Descrição do Serviço
             $table->string('target_public')->nullable(); // Público Alvo
-            $table->string('requirements'); // Requisitos
+            $table->string('requirements', 500); // Requisitos
             $table->text('quick_help')->nullable(); // Ajuda Rápida
             $table->integer('slt_id')->unsigned(); // ID da SLT
-            $table->integer('sector_id')->unsigned(); // Chave Estrangeira do Setor Responsável
-            $table->foreign('sector_id')->references('id')->on('sectors');
+            $table->integer('sector_category_id')->unsigned(); // Chave Estrangeira do Setor Responsável
+            $table->foreign('sector_category_id')->references('id')->on('sector_categories');
         });
     }
 

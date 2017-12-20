@@ -1,91 +1,96 @@
 @extends('layouts.simple')
 
 @section('content')
-<!-- Banner
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <div class="row center">
-            <img src="img/logonti.png" class="responsive-img">
-        </div>
-        <h3 class="header center light-blue-text hide-on-med-and-down">Núcleo de Tecnologia da Informação - Arapiraca</h3>
-        <br><br>
-
-    </div>
-</div> -->
-
-<!-- Serviços -->
-<div class="container">
-    <div class="section">
-    
-        
-        
-        <!-- <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">build</i></h2>
-                    <h5 class="center"><a class="orange-text" href="desenvolvimento">Manutenção</a></h5>
-                    <p class="light" align="justify">Realiza manutenções de equipamentos de informática, realizar manutenção preventiva, instalação de antivírus e suporte técnico.</p>
-                </div>
-
-            </div>
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">device_hub</i></h2>
-                    <h5 class="center"><a class="orange-text" href="redes">Redes</a></h5>
-                    <p class="light" align="justify">Responde por toda a estrutura de cabeamento e equipamentos de rede, bem como os servidores de rede das sub-redes distribuídas pelo Campus</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">computer</i></h2>
-                    <h5 class="center "><a class="orange-text" href="desenvolvimento">Sistemas</a></h5>
-                    <p class="light" align="justify">Setor responsável pelo desenvolvimento e manutenção web e de softwares relevantes para a comunidade acadêmica da UFAL.</p>
-                </div>
-            </div>
-
-        </div> -->
-        
-        
-    </div>
-    
-</div>
 
 <!-- Catálogo de Serviços -->
 <div class="container">
     
     <div class="col s12 m12">
-        
 
+        <div class="row" style="margin-top: 50px">
         
-        @if(Auth::check())
-            <a href="{{ route('dashboard.services.create') }}" class="waves-effect waves-light btn">Novo Serviço</a>
-        @endif
-
-        <div class="row">
-            <div class="col s12">
-                <h5>Servíços disponibilizados</h5>
-            </div>
+            <a href="#" class="btn blue">Setor + </a>
+            <a href="{{ route('dashboard.sector.categories.create') }}" class="btn blue darken-2">Divisão do setor + </a>
+            <a href="{{ route('dashboard.services.create') }}" class="btn blue darken-4">Serviço + </a>
+        
         </div>
         
         <div class="row" style="margin-bottom: 50px">
             
             @foreach($sectors as $sector)
-                <div class="col s4 m4">
+                <div class="col m12">
                     <div class="card">
-                        
                         <div class="card-content">
                             <span class="card-title">{{ $sector->name }}</span>
-                            @if(count($sector->services) > 0)
-                                <div class="collection">
-                                    @foreach($sector->services as $service)
-                                        <a class="collection-item" href="{{ route('dashboard.services.view',['id' => $service->id]) }}">{{ $service->name }}</a>
+                            
+                            @foreach($sector->sector_categories as $category)
+                                
+                                <div class="">
+                                    @if(count($category->services) > 0)
+                                    <div class="chip">
+                                        @if(!empty($category->icon))
+                                            <img src="{{$category->icon}}">
+                                        @endif
+                                        {{$category->name}}
+                                    </div>
+                                    
+                                    <ul class="collapsible" data-collapsible="accordion">
+                                    @foreach($category->services as $service)
+                                        <li>
+                                            <div class="collapsible-header"><strong>{{ $service->name }}</strong></div>
+                                            <div class="collapsible-body">
+
+                                                <div>
+                                                    <span class="service-title"><i class="material-icons">announcement</i>  Descrição: </span>
+                                                    <div class="service-content">
+                                                    <p>{{ $service->description }}</p>
+                                                    </div>
+                                                </div>
+
+                                                @if($service->requeriments != null)
+                                                    <div>
+                                                        <span class="service-title"><i class="material-icons">attach_file</i>  Requisitos: </span>
+                                                        <div class="service-content">
+                                                            <p>{{ $service->requeriments }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                
+                                                @if($service->quick_help != null)
+                                                <div>
+                                                    <span class="service-title"><i class="material-icons">av_timer</i>  Ajuda rápida: </span>
+                                                    <i class="material-icons"></i>
+                                                    <div class="service-content">
+                                                        <p>{{ $service->quick_help }}</p>
+                                                    </div>
+                                                </div>
+                                                @endif
+
+                                                @if($service->target_public != null)
+                                                <div>
+                                                    <span class="service-title"><i class="material-icons">person_pin</i>  Público alvo: </span>
+                                                    <div class="service-content">
+                                                        <p>{{ $service->target_public }}</p>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                
+                                                <div class="service-buttons">
+                                                    <a href="{{ route('dashboard.services.view', ['id' => $service->id]) }}" class="waves-effect blue lighten-2 btn">Detalhes</a>
+
+                                                    <a href="#" class="waves-effect green lighten-2 btn">Criar chamado</a>
+                                                </div>
+                                            </div>
+                                        </li>
                                     @endforeach
+                                    </ul>                         
+
+                                    @endif
+                                    
                                 </div>
-                            @else
-                                <p> O setor não possui serviços cadastrados </p>
-                            @endif
+
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>

@@ -11,10 +11,12 @@ class Sector extends Model
         'name', 
         'description'
     ];
+
     public $timestamps = false;
 
-    public function services()
+    public function sector_categories()
     {
-        return $this->hasMany(\App\Models\Service::class);
+        return $this->hasMany(\App\Models\SectorCategory::class);
     }
+
 }

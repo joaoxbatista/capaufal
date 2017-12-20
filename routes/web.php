@@ -46,7 +46,7 @@ Route::group(
 			[
 				'as' => 'services.',
 				'prefix' => 'services',
-				// 'middleware' => 'glpi.auth'
+
 			],
 
 			function()
@@ -61,6 +61,31 @@ Route::group(
 				Route::post('update', 'Dashboard\ServicesController@update')->name('update');
 				
 				Route::post('remove', 'Dashboard\ServicesController@remove')->name('remove');
+			}
+
+		);
+
+		//Rotas para Categorias de Setores
+		Route::group(
+
+			[
+				'as' => 'sector.categories.',
+				'prefix' => 'sectorcategories',
+
+			],
+
+			function()
+			{
+				Route::get('success', 'Dashboard\SectorCategoriesController@success')->name('success');
+				Route::get('view/{id}', 'Dashboard\SectorCategoriesController@show')->name('view');
+				
+				Route::get('create', 'Dashboard\SectorCategoriesController@create')->name('create');
+				Route::post('store', 'Dashboard\SectorCategoriesController@store')->name('store');
+				
+				Route::post('edit', 'Dashboard\SectorCategoriesController@edit')->name('edit');
+				Route::post('update', 'Dashboard\SectorCategoriesController@update')->name('update');
+				
+				Route::post('remove', 'Dashboard\SectorCategoriesController@remove')->name('remove');
 			}
 
 		);
@@ -87,6 +112,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

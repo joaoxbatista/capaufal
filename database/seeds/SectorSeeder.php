@@ -13,16 +13,19 @@ class SectorSeeder extends Seeder
     public function run()
     {
         Sector::create([
+            'id' => 1,
             'name' => 'Manutenção',
             'description' => 'some description here'
         ]);
 
         Sector::create([
+            'id' => 2,
             'name' => 'Redes',
             'description' => 'some description here'
         ]);
 
         Sector::create([
+            'id' => 3,
             'name' => 'Sistemas',
             'description' => 'some description here'
         ]);

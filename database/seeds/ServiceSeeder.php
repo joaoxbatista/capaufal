@@ -20,7 +20,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Dispositivo computacional que permita acesso a rede sem fio. Smartphone, tablet, notebook ou outro',
             'quick_help' => 'Senha de acesso ufalsong', 
             'slt_id' => 1,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -30,7 +30,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Preenchimento de formulário de solicitação, dispositivo computacional que permita telefonia SIP (smartphone, por exemplo)',
             'quick_help' => '', 
             'slt_id' => 3,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -40,7 +40,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Equipamento com IP fixo em conformidade com políticas internas de Redes; serviço VNC, RDP ou SSH devidamente configurado; solicitação e criação de usuário para esta finalidade no setor de Redes',
             'quick_help' => '', 
             'slt_id' => 4,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -50,7 +50,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Equipamento com serviço HTTP devidamente configurado; sistema respondendo a partir de um subdiretório (por exemplo my.ara/sistema e não my.ara/); solicitação no setor de Redes',
             'quick_help' => '', 
             'slt_id' => 7,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -60,7 +60,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação não conflitante com o conjunto de informações públicas oficialmente nas páginas da Ufal mantidas pela Ascom; solicitação no setor de Redes',
             'quick_help' => '', 
             'slt_id' => 91,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -70,7 +70,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Acesso a central.arapiraca.ufal.br/cdteca',
             'quick_help' => '', 
             'slt_id' => 21,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         Service::create([
@@ -80,7 +80,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Acesso a sistemas.arapiraca.ufal.br/telefones',
             'quick_help' => '', 
             'slt_id' => 22,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
         
         Service::create([
@@ -90,7 +90,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Acesso a central.arapiraca.ufal.br/ e seleção da opção "Tráfego"',
             'quick_help' => '', 
             'slt_id' => 23,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
         
         Service::create([
@@ -100,7 +100,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Acesso a partir da rede do Campus Arapiraca - Sede, solicitação no setor de Redes',
             'quick_help' => '', 
             'slt_id' => 24,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]); 
 
         Service::create([
@@ -110,7 +110,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação no setor de Redes; acesso a central.arapiraca.ufal.br/drive',
             'quick_help' => '', 
             'slt_id' => 25,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
 
@@ -121,7 +121,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação não conflitante com o conjunto de informações públicas oficialmente nas páginas da Ufal mantidas pela Ascom; solicitação no setor de Redes',
             'quick_help' => '', 
             'slt_id' => 26,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
 
@@ -132,7 +132,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Instalação de cliente Mumble; acesso via cliente Mumble a central.arapiraca.ufal.br, na porta 64738',
             'quick_help' => '', 
             'slt_id' => 27,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
 
@@ -143,7 +143,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Disponibilidade de recursos nos nós de virtualização (no setor de redes); solicitação no setor',
             'quick_help' => '', 
             'slt_id' => 28,
-            'sector_id' => 2,
+            'sector_category_id' => 2,
         ]);
 
         /*Serviços do Setor de Sistemas*/
@@ -154,7 +154,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Apresentar um documento oficial de identificação com foto e informar o e-mail desejado',
             'quick_help' => '', 
             'slt_id' => 29,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
         Service::create([
@@ -164,7 +164,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitar via email institucional',
             'quick_help' => '', 
             'slt_id' => 30,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
 
@@ -175,7 +175,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Enviar por email com a descrição detalhada do problema e com o print da tela',
             'quick_help' => '', 
             'slt_id' => 31,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
 
@@ -186,7 +186,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'O responsável por determinada área no site deve enviar o conteúdo (texto, imagens, arquivos, links) conforme deve ser colocado no site',
             'quick_help' => '', 
             'slt_id' => 32,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
         Service::create([
@@ -196,7 +196,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação do responsável por determinada área no site através email institucional informando os dados do novo usuário	Solicitação do responsável por determinada área no site através email institucional informando os dados do novo usuário',
             'quick_help' => '', 
             'slt_id' => 33,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
 
@@ -207,7 +207,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação do responsável pelo setor na instituição ou área no site através do email institucional com o conteúdo que deve ser colocado no site.						',
             'quick_help' => '', 
             'slt_id' => 34,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
 
         Service::create([
@@ -217,7 +217,7 @@ class ServiceSeeder extends Seeder
             'requirements' => 'Solicitação através do email institucional (servidores) e inscrição nos minicursos disponibilizados (Discentes e Servidores) 					',
             'quick_help' => '', 
             'slt_id' => 35,
-            'sector_id' => 3,
+            'sector_category_id' => 3,
         ]);
     }
 }

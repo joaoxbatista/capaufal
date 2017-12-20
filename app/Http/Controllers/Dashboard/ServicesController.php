@@ -48,7 +48,15 @@ class ServicesController extends Controller
 	public function create(Request $request)
 	{
 		$sectors = Sector::all();
-		return view('dashboard.service.create', compact('sectors'));
+		$categories = [];
+		
+		foreach ($sectors as $sector) {
+			foreach ($sector->sector_categories as $category) {
+				$categories[$category->id] = "{$sector->name} - {$category->name}";
+			}
+		}
+
+		return view('dashboard.service.create', compact('categories'));
 	}
 
 	public function store(Request $request)

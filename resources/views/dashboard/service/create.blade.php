@@ -36,9 +36,9 @@
                 </div>
                 
                 <div class="input-field col s6">
-                    <select name="sector_id">
-                        @foreach($sectors as $sector)
-                            <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                    <select name="sector_category_id">
+                        @foreach($categories as $key => $name)
+                            <option value="{{ $key }}">{{ $name }}</option>
                         @endforeach()
                     </select>
                     <label>Setor</label>

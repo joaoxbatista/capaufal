@@ -40,9 +40,6 @@
 	</div>
 </nav>
 
-<div id="info-user">
-	{{ Auth::user() }}
-</div>
 
 <div id="content" style="min-height: 50vh">
 	@yield('content')

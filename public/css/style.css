@@ -6,7 +6,7 @@
  * Made By MaterializeCSS.com
  */
 body{
-  background-color: #eeeeee;
+  background-color: #fafafa;
 }
 .icon-block {
   padding: 0 15px;
@@ -58,4 +58,51 @@ body{
 #menu ul li a
 {
 	text-transform: uppercase;
+}
+
+.collapsible
+{
+	-webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none;
+}
+.collapsible-header
+{
+	background: #64b5f6;
+	color: #fff;
+	border: 0px;
+	border-radius: 12px 12px 0px 0px;
+	margin-top: 10px;
+	font-size: 12px;
+
+}
+
+.service-title 
+{
+	height: 40px;
+	padding: 5px 40px;
+	display: block;
+	position: relative;
+	line-height: 30px;
+	font-weight: bold;
+}
+
+.service-title i
+{
+	position: absolute;
+	margin-top: 4px;
+	margin-left: -30px;
+}
+
+.service-content
+{
+	padding: 5px 40px;
+	display: block;
+}
+
+.collapsible-body
+{
+	background: #e3f2fd;
+	color: #444;
+	border-radius: 0px 0px 12px 12px;
 }
