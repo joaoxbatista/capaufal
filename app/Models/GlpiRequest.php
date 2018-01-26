@@ -48,7 +48,7 @@ class GlpiRequest
     //Adiciona as credenciais ao cabeçalho da requisição
     public function setCredentials($username, $password)
     {
-    	$this->headers['Authorization'] = 'Basic '.base64_encode("{$username}:{$password}");
+        $this->headers['Authorization'] = 'Basic '.base64_encode("{$username}:{$password}");
     }
 
     // Seta o token da aplicação Glpi.
@@ -61,7 +61,7 @@ class GlpiRequest
     public function getSessionToken()
     {
     	$url_session = "{$this->base_url}/initSession";
-    	
+
     	$session_request = new ExternalRequest('GET', $url_session, $this->headers);
     	
     	$response = $this->client->send($session_request);
@@ -76,13 +76,17 @@ class GlpiRequest
     	$url_store = "{$this->base_url}/{$entity_name}";
     	$this->setBody($data);
     	$this->addToHeader('Session-Token', $session_token);
-    
+
+        $data = [
+            'input' => $data
+        ];
+
         $response = $this->client->post($url_store, [
-    		'headers' => $this->headers, 
-    		'json' => ['input' => ['name' => 'teste']]
+    		'headers' => $this->headers,
+    		'json' => $data
     	]);
 
-    	
-    	return $response->getBody();
+
+        return $response->getBody();
     }
 }

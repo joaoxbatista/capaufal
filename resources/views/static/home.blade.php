@@ -4,37 +4,42 @@
 
 <!-- Catálogo de Serviços -->
 <div class="container">
-    
+
+    @if(session()->has('message'))
+        {{ session()->get('message') }}
+    @endif
     <div class="col s12 m12">
 
-        <div class="row" style="margin-top: 50px">
+        @if(Auth::check())
+            <div class="row" style="margin-top: 50px">
+                <a href="{{ route('dashboard.sector.categories.create') }}" class="btn blue darken-2">Subcategoria + </a>
+                <a href="{{ route('dashboard.services.create') }}" class="btn blue darken-4">Serviço + </a>
+            </div>
+        @endif
         
-            <a href="#" class="btn blue">Setor + </a>
-            <a href="{{ route('dashboard.sector.categories.create') }}" class="btn blue darken-2">Divisão do setor + </a>
-            <a href="{{ route('dashboard.services.create') }}" class="btn blue darken-4">Serviço + </a>
-        
-        </div>
-        
-        <div class="row" style="margin-bottom: 50px">
-            
+        <div class="row" style="margin: 50px 0px;">
+
+            <ul class="tabs ">
+                @foreach($sectors as $sector)
+                    <li class="tab col m3">
+                        <a href="#sector-{{ $sector->id }}">{{ $sector->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+
             @foreach($sectors as $sector)
-                <div class="col m12">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">{{ $sector->name }}</span>
-                            
-                            @foreach($sector->sector_categories as $category)
-                                
-                                <div class="">
-                                    @if(count($category->services) > 0)
-                                    <div class="chip">
-                                        @if(!empty($category->icon))
-                                            <img src="{{$category->icon}}">
-                                        @endif
-                                        {{$category->name}}
-                                    </div>
-                                    
-                                    <ul class="collapsible" data-collapsible="accordion">
+                <div id="sector-{{ $sector->id }}" class="sector col-s12">
+                    @foreach($sector->sector_categories as $category)
+                        <div class="">
+                            @if(count($category->services) > 0)
+                                <div class="category-chip">
+                                    @if(!empty($category->icon))
+                                        <img src="{{$category->icon}}">
+                                    @endif
+                                    {{$category->name}}
+                                </div>
+
+                                <ul class="collapsible" data-collapsible="accordion">
                                     @foreach($category->services as $service)
                                         <li>
                                             <div class="collapsible-header"><strong>{{ $service->name }}</strong></div>
@@ -43,7 +48,7 @@
                                                 <div>
                                                     <span class="service-title"><i class="material-icons">announcement</i>  Descrição: </span>
                                                     <div class="service-content">
-                                                    <p>{{ $service->description }}</p>
+                                                        <p>{{ $service->description }}</p>
                                                     </div>
                                                 </div>
 
@@ -55,26 +60,26 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                
+
                                                 @if($service->quick_help != null)
-                                                <div>
-                                                    <span class="service-title"><i class="material-icons">av_timer</i>  Ajuda rápida: </span>
-                                                    <i class="material-icons"></i>
-                                                    <div class="service-content">
-                                                        <p>{{ $service->quick_help }}</p>
+                                                    <div>
+                                                        <span class="service-title"><i class="material-icons">av_timer</i>  Ajuda rápida: </span>
+                                                        <i class="material-icons"></i>
+                                                        <div class="service-content">
+                                                            <p>{{ $service->quick_help }}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 @endif
 
                                                 @if($service->target_public != null)
-                                                <div>
-                                                    <span class="service-title"><i class="material-icons">person_pin</i>  Público alvo: </span>
-                                                    <div class="service-content">
-                                                        <p>{{ $service->target_public }}</p>
+                                                    <div>
+                                                        <span class="service-title"><i class="material-icons">person_pin</i>  Público alvo: </span>
+                                                        <div class="service-content">
+                                                            <p>{{ $service->target_public }}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 @endif
-                                                
+
                                                 <div class="service-buttons">
                                                     <a href="{{ route('dashboard.services.view', ['id' => $service->id]) }}" class="waves-effect blue lighten-2 btn">Detalhes</a>
 
@@ -83,20 +88,38 @@
                                             </div>
                                         </li>
                                     @endforeach
-                                    </ul>                         
+                                </ul>
 
-                                    @endif
-                                    
-                                </div>
+                            @endif
 
-                            @endforeach
-                            
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             @endforeach
+
+
         </div>
     </div>
 
 </div>
+@endsection
+
+@section('styles')
+    <style>
+        .sector
+        {
+            min-height: 400px;
+            color: #898989;
+            padding: 10px;
+        }
+    </style>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('ul.tabs').tabs({
+                responsiveThreshold: true
+            });
+        });
+    </script>
 @endsection

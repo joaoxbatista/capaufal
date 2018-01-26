@@ -68,13 +68,11 @@ body{
 }
 .collapsible-header
 {
-	background: #64b5f6;
-	color: #fff;
+	background: #f5f5f5;
+	color: #080808;
 	border: 0px;
-	border-radius: 12px 12px 0px 0px;
-	margin-top: 10px;
-	font-size: 12px;
-
+	font-size: 14px;
+	text-transform: capitalize;
 }
 
 .service-title 
@@ -104,5 +102,24 @@ body{
 {
 	background: #e3f2fd;
 	color: #444;
-	border-radius: 0px 0px 12px 12px;
+}
+
+.category-chip
+{
+	background: #888;
+	color: #f5f5f5;
+	margin-bottom: -10px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.tabs .tab a
+{
+	color: #080808;
+}
+
+.tabs .tab a.active
+{
+	color: #424242;
+	border: none;
 }

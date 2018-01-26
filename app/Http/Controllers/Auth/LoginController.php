@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Adldap\Laravel\Facades\Adldap;
 use Illuminate\Http\Request;
+use App\Models\GlpiRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -54,9 +55,12 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request) {
         $credentials = $request->only($this->username(), 'password');
+
         $username = $credentials[$this->username()];
         $password = $credentials['password'];
-        
+
+
+
         $user_format = env('ADLDAP_USER_FORMAT', 'cn=%s,'.env('ADLDAP_BASEDN', ''));
         $userdn = sprintf($user_format, $username);
         
@@ -72,6 +76,21 @@ class LoginController extends Controller
             }
             // by logging the user we create the session so there is no need to login again (in the configured time)
             $this->guard()->login($user, true);
+
+            /*Glpi Autenticação*/
+
+            //1 - Instanciar classe que manipuça as informações do GLPI
+            $GLPIAuth = new GlpiRequest();
+
+            //2 - Setar as credenciais
+            $GLPIAuth->setCredentials($username, $password);
+
+            //3 - Obtem o token
+            $GLPIToken = $GLPIAuth->getSessionToken();
+
+            //4 - Adicionar token a sessão
+            session()->push('glpi_session_token', $GLPIToken);
+
             return true;
         }
         

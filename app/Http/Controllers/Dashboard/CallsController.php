@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\GlpiRequest;
 
 class CallsController extends Controller
 {
@@ -20,7 +21,14 @@ class CallsController extends Controller
     {
 	    $data = $request->except('_token');
 	    $GlpiRequest = new GlpiRequest();
-	    $message = $GlpiRequest->store($request->session()->get('session_token'), 'Ticket', $data);
-	    echo $message;
+	    $glpi_token = session()->get('glpi_session_token');
+
+	    if($glpi_token)
+        {
+            $message = $GlpiRequest->store($glpi_token, 'Ticket', $data);
+            return redirect()->route('static.home')->with(['message', $message]);
+        }
+
+        return null;
     }
 }
