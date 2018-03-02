@@ -18,6 +18,44 @@
                     </div>
                 </div>
                 
+                  
+                <div class="row">
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span><i class="material-icons left">attach_file</i> Anexo 1</span>
+                            <input type="file" name="annex1">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span><i class="material-icons left">attach_file</i> Anexo 2</span>
+                            <input type="file" name="annex2">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span><i class="material-icons left">attach_file</i> Anexo 3</span>
+                            <input type="file" name="annex3">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                
+
                 <div class="row">
                     <div class="col s12">
                         <button class="waves-effect waves-light btn" type="submit">Enviar</button>

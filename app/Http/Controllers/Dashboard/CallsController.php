@@ -19,16 +19,26 @@ class CallsController extends Controller
 
     public function store(Request $request)
     {
-	    $data = $request->except('_token');
+	    
+        $data = $request->except('_token');
 	    $GlpiRequest = new GlpiRequest();
 	    $glpi_token = session()->get('glpi_session_token');
+
+        
 
 	    if($glpi_token)
         {
             $message = $GlpiRequest->store($glpi_token, 'Ticket', $data);
             return redirect()->route('static.home')->with(['message', $message]);
         }
+        else
+        {
+            dd(session()->get('glpi_session_token'));
 
-        return null;
+        }
+
+
+
+        
     }
 }

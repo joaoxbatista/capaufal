@@ -8,6 +8,8 @@
     @if(session()->has('message'))
         {{ session()->get('message') }}
     @endif
+
+    {{ Auth::user() }}
     <div class="col s12 m12">
 
         @if(Auth::check())
@@ -83,7 +85,13 @@
                                                 <div class="service-buttons">
                                                     <a href="{{ route('dashboard.services.view', ['id' => $service->id]) }}" class="waves-effect blue lighten-2 btn">Detalhes</a>
 
-                                                    <a href="#" class="waves-effect green lighten-2 btn">Criar chamado</a>
+                                                    @if(Auth::check())
+                                                        <form method="post" action="{{route('dashboard.calls.create')}}" style="display: inline;">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                            <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                                            <button type="submit" class="waves-effect waves-light btn">Criar chamado</button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </li>

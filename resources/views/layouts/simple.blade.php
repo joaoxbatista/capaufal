@@ -24,7 +24,7 @@
 				<li><a href="">Serviços</a></li>
 				<li><a href="">Informações</a></li>
 				<li><a href="">Contato</a></li>
-				<li><a href="{{ route('login') }}">Entrar</a></li>
+				
 				@if(Auth::check())
 				<li>
 					<a href="{{ route('logout') }}"
@@ -36,6 +36,8 @@
 						{{ csrf_field() }}
 					</form>
 				</li>
+				@else
+					<li><a href="{{ route('login') }}">Entrar</a></li>
 				@endif
 			</ul>
 		</div>

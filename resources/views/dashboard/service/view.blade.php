@@ -31,13 +31,15 @@
                     <input type="hidden" name="service_id" value="{{ $service->id }}">
                     <button type="submit" class="waves-effect waves-light red accent-4 btn">Deletar</button>
                 </form>
+
+                <form method="post" action="{{route('dashboard.calls.create')}}" style="display: inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+                    <button type="submit" class="waves-effect waves-light btn">Criar chamado</button>
+                </form>
             @endif
 
-            <form method="post" action="{{route('dashboard.calls.create')}}" style="display: inline;">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="service_id" value="{{ $service->id }}">
-                <button type="submit" class="waves-effect waves-light btn">Criar chamado</button>
-            </form>
+
 
         </div>
     </div>
