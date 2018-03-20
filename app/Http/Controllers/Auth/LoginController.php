@@ -87,9 +87,9 @@ class LoginController extends Controller
 
             //3 - Obtem o token
             $GLPIToken = $GLPIAuth->getSessionToken();
-            
+
             //4 - Adicionar token a sessão
-            $this->session()->push('glpi_session_token', $GLPIToken);
+            session()->push('glpi_session_token', $GLPIToken);
 
 
             return true;

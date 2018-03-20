@@ -10,6 +10,7 @@
     @endif
 
     {{ Auth::user() }}
+    {{ session()->get('glpi_session_token')[0] }}
     <div class="col s12 m12">
 
         @if(Auth::check())

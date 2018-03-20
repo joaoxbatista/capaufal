@@ -21,9 +21,8 @@
 			<a href="#" class="brand-logo">Universidade Federal de Alagoas Campus Arapiraca</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="{{ route('static.home') }}">Página Inicial</a></li>
-				<li><a href="">Serviços</a></li>
-				<li><a href="">Informações</a></li>
-				<li><a href="">Contato</a></li>
+				<!-- <li><a href="">Serviços</a></li> -->
+				<li><a href="{{ route('dashboard.user.settings') }}">Configurações</a></li>
 				
 				@if(Auth::check())
 				<li>

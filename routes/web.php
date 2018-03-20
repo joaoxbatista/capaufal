@@ -90,7 +90,7 @@ Route::group(
 
 		);
 
-		//Rotas para chamado
+		//Rotas para Chamado
 		Route::group(
 			[
 				'as' => 'calls.',
@@ -103,10 +103,23 @@ Route::group(
 				Route::post('store', 'Dashboard\CallsController@store')->name('store');
 			}
 		);
+
+		//Rotas para Usuário
+		Route::group(
+			[
+				'as' => 'user.',
+				'prefix' => 'user'
+
+			],
+
+			function()
+			{
+				Route::get('settings', 'Dashboard\UserController@settings')->name('settings');
+				Route::post('settings', 'Dashboard\UserController@settingsUpdate')->name('settings');
+			}
+		);
 	}
 );
-
-
 
 Auth::routes();
 

@@ -21,4 +21,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function settings()
+    {
+        return $this->hasOne('App\Models\UserSettings');
+    }
 }

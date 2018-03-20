@@ -67,10 +67,6 @@ class GlpiRequest
     	$response = $this->client->send($session_request);
         
         $token = json_decode($response->getBody());
-        die();
-        echo "TOKEN: {$token}";
-        echo "TOKEN: {$url_session}";
-        var_dump($response);
         
         return $token->session_token;
     }
