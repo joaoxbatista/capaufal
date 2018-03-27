@@ -5,13 +5,12 @@
 <!-- Catálogo de Serviços -->
 <div class="container">
 
-    @if(session()->has('message'))
-        {{ session()->get('message') }}
-    @endif
-
-    {{ Auth::user() }}
-    {{ session()->get('glpi_session_token')[0] }}
+    
+    
     <div class="col s12 m12">
+        @if(session('success_message'))
+           <p>{{ session('success_message') }}</p>
+        @endif
 
         @if(Auth::check())
             <div class="row" style="margin-top: 50px">

@@ -45,6 +45,9 @@
 
 
 <div id="content" style="min-height: 50vh">
+	<div class="container">
+		@include('flash::message')
+	</div>
 	@yield('content')
 </div>
 
@@ -88,13 +91,18 @@
 	
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="{{ asset('js/materialize.js') }}"></script>
 	<script src="{{ asset('js/init.js') }}"></script>
+
 	<script>
 		$(document).ready(function(){
 			$('.collapsible').collapsible();
 			$('select').material_select();
 		});
+	</script>
+	<script>
+		$('#flash-overlay-modal').modal();
 	</script>
 </body>
 </html>
